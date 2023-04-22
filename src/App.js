@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import * as API from './API/ocr'
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={API.recognize}>
+          Activate OCR
+        </button>
       </header>
     </div>
   );
