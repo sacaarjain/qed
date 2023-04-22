@@ -2,6 +2,9 @@ import React from 'react'
 import { Grommet, Page, PageContent, Card, CardHeader, Text, Box, Main, TextInput, Button, FileInput } from 'grommet'
 import { Checkmark } from 'grommet-icons'
 import Results from './Results'
+import { runPrompt } from './Gpt'
+import {useState} from 'react'
+import Ocr from './Ocr';
 const theme = {
   global: {
     font: {
@@ -14,6 +17,8 @@ const theme = {
 
 // main ui code
 export default function App() {
+  const [value, setValue] = React.useState('');
+
     // <Results>: result-based image rendering component
   return (
     <Grommet full theme={theme}>
@@ -32,20 +37,12 @@ export default function App() {
                     Submit your math proof for validation:
                   </Text>
                   <Box align="center" justify="center" direction="row">
-                    <TextInput />
-                    <Button label="Submit" icon={<Checkmark />} hoverIndicator type="submit" gap="small" color="graph-3" />
+                    <TextInput value={value} onChange={event => setValue(event.target.value)}/>
+                    <Button label="Submit" icon={<Checkmark />} hoverIndicator type="submit" gap="small" color="graph-3" onClick={()=>{runPrompt(value)}}/>
                   </Box>
                 </Main>
               </Box>
-              <Box align="center" justify="center">
-                <Text>
-                   or...
-                </Text>
-                <Box align="center" justify="center" direction="column">
-                  <FileInput renderFile={10} a11yTitle="image" />
-                  <Button label="Submit" icon={<Checkmark />} />
-                </Box>
-              </Box>
+              <Ocr />
             </Card>
             <Card>
               <Results
