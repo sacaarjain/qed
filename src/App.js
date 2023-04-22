@@ -12,9 +12,9 @@ const theme = {
   },
 };
 
-
+// main ui code
 export default function App() {
-    
+    // <Results>: result-based image rendering component
   return (
     <Grommet full theme={theme}>
       <Page>
