@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Grommet, Page, PageContent, Card, CardHeader, Text, Box, Main, TextInput, Button, FileInput } from 'grommet'
-import { Checkmark } from 'grommet-icons'
+import { Text, Box, Button, FileInput } from 'grommet'
 
 export default function Ocr() {
   const [ocrResult, setOcrResult] = useState('');

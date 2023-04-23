@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-	apiKey: "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",
+	apiKey: "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",
 });
 
 const openai = new OpenAIApi(config);
@@ -12,7 +12,6 @@ export const runPrompt = async (question) => {
     {
         "Q": "question",
         "A": "answer"
-		"COQ": "translate math proof into COQ"
     }
     `;
 
@@ -26,6 +25,10 @@ export const runPrompt = async (question) => {
 	const parsableJSONresponse = response.data.choices[0].text;
 	const parsedResponse = JSON.parse(parsableJSONresponse);
 
+	const answer = `Question: ${parsedResponse.Q} \n Answer: ${parsedResponse.A} \n`;
+	return answer;
+
+	console.log(answer)
 	console.log("Question: ", parsedResponse.Q);
 	console.log("Answer: ", parsedResponse.A);
 	console.log("COQ: ", parsedResponse.COQ);
