@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Grommet, Page, PageContent, Card, CardHeader, Text, Box, Main, TextInput, Button, FileInput } from 'grommet'
 import axios from 'axios';
 
 function Math() {
@@ -18,7 +19,6 @@ function Math() {
   }
 
   function handleFileChange(event) {
-    setFile(event.target.files[0]);
     setOcrResult('');
   }
 
@@ -61,9 +61,12 @@ function Math() {
 
   return (
     <div className="App">
-      <h1>OCR Example</h1>
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-      <button onClick={handleOcr}>Run OCR</button>
+    
+      <FileInput name="file" onChange={event => {
+                    setFile(event.target.files[0]);
+                    handleFileChange()
+                    }} />
+      {/*<button onClick={handleOcr}>Run OCR</button>*/}
       <p>
         {showResult &&
             ocrResult

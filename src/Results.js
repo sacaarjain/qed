@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import {Image, Box} from 'grommet'
 
 
@@ -22,4 +22,4 @@ export default function Results(props){
     </Box>
     );
 }
-
+*/
