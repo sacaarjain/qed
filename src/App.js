@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Grommet, Page, PageContent, Card, CardHeader, Text, Box, Main, TextInput, Button, FileInput } from 'grommet'
 import { Checkmark } from 'grommet-icons'
 import Results from './Results'
@@ -15,9 +15,13 @@ const theme = {
   },
 };
 
+
 // main ui code
 export default function App() {
   const [value, setValue] = React.useState('');
+  
+
+
 
     // <Results>: result-based image rendering component
   return (
@@ -50,7 +54,7 @@ export default function App() {
                   </Text>
                   <Box align="center" justify="center" direction="row">
                     <TextInput value={value} onChange={event => setValue(event.target.value)}/>
-                    <Button label="Submit" icon={<Checkmark />} hoverIndicator type="submit" gap="small" color="graph-3" onClick={()=>{runPrompt(value)}}/>
+                    <Button label="Submit" /*icon={<Checkmark />}*/ hoverIndicator type="submit" gap="small"  onClick={()=>{runPrompt(value);}}/>
                   </Box>
                 </Main>
               </Box>

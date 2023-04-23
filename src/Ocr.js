@@ -8,6 +8,8 @@ export default function Ocr() {
   const [file, setFile] = useState(null);
   const [isFetchingResult, setIsFetchingResult] = useState(false);
   const [operationLocation, setOperationLocation] = useState(null);
+  const [isDisabled1, setIsDisabled1] = useState(false);
+  const [isDisabled2, setIsDisabled2] = useState(true);
 
   function handleFileChange(event) {
     setOcrResult('');
@@ -18,7 +20,10 @@ export default function Ocr() {
     if (!file) {
       alert('Please select an image file.');
       return;
+    
     }
+    setIsDisabled1(true)
+    setIsDisabled2(false)
 
     setIsFetchingResult(true);
 
@@ -43,7 +48,8 @@ export default function Ocr() {
   }
 
   function handleGetResult() {
-    setIsFetchingResult(true);
+    setIsDisabled1(false)
+    setIsDisabled2(true)
 
     // Get the OCR result from the server
     axios.get(operationLocation, {
@@ -79,20 +85,15 @@ export default function Ocr() {
     <div className="App">
       <Box align="center" justify="center">
                 <Text>
-                   or...
+                   
                 </Text>
                 <Box align="center" justify="center" direction="column">
                   <FileInput name="file" onChange={event => {
                     setFile(event.target.files[0]);
                     handleFileChange()
                     }} />
-                  <Button label="Submit" onClick={event => {handleOcr()}}/>
-                  {isFetchingResult? (
-                    <p>Fetching Result...</p>
-                  ) : (
-                    <Button label="Show Result" onClick={event => {handleGetResult()}}/>
-                  )}
-                  
+                  <Button label="Submit" disabled = {isDisabled1} onClick={event => {handleOcr()}}/>
+                  <Button label="Show Result" disabled = {isDisabled2} onClick={event => {handleGetResult()}}/>
                 </Box>
         </Box>
         <OcrResult result={ocrResult} />
