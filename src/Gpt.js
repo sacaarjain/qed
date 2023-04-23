@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-	apiKey: "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",
+	apiKey: "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",
 });
 
 const openai = new OpenAIApi(config);
@@ -13,8 +13,8 @@ export const runPrompt = async (question, answer) => {
 	This is the student's Answer: ${answer}
 	Please Return response regarding whether the student answered the question correctly in the following parsable JSON format. Do not include any backslash characters in your JSON formatting:
     {
-        "Q": "given question without any backslashes and converting latex into plaintext. Make text readable for humans.",
-        "A": "given answer without any backslashes and converting latex into plaintext. Make text readable for humans."
+        "Q": "given question without any backslashes and converting latex into plaintext. Make text readable for humans. Do not provide characters that could conflict with JSON format",
+        "A": "given answer without any backslashes and converting latex into plaintext. Make text readable for humans. Do not provide characters that could conflict with JSON format"
 		"Result": "decide whether the answer provided is sufficient and accurate with respect to the question, and provide reason why. Do not answer the question yourself. Just check whether the answer provided is correct or not."
     }
     `;
