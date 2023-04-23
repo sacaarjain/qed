@@ -1,24 +1,24 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-	apiKey: "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",
+	apiKey: "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",
 });
 
 const openai = new OpenAIApi(config);
 
 export const runPrompt = async (question, answer) => {
 	const prompt = `
-    I will give you a Question and the Answer that a student has attempted to answer the Question with. Do not answer the question. Grade the answer to that question. Is the student's Answer correct?
-	This is the question from the textbook: ${question}
+    I will be providing you with a Question and an Answer from a student that could be in Latex.
+	The question is as follows: ${question}
 	This is the student's Answer: ${answer}
-	Return response regarding whether the student answered the question correctly in the following parsable JSON format:
+	Please Return response regarding whether the student answered the question correctly in the following parsable JSON format. Do not include any backslash characters in your JSON formatting:
     {
-        "Q": "given question",
-        "A": "given answer"
-		"Result": "decide whether answer is correct or not, and provide reason why"
+        "Q": "given question without any backslashes and converting latex into plaintext. Make text readable for humans.",
+        "A": "given answer without any backslashes and converting latex into plaintext. Make text readable for humans."
+		"Result": "decide whether the answer provided is sufficient and accurate with respect to the question, and provide reason why. Do not answer the question yourself. Just check whether the answer provided is correct or not."
     }
     `;
-
+	console.log(prompt)
 	const response = await openai.createCompletion({
 		model: "text-davinci-003",
 		prompt: prompt,
