@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { FileInput } from 'grommet'
+import App from './App.js'
 
 function Math() {
   const [ocrResult, setOcrResult] = useState('');
   const [file, setFile] = useState(null);
-  const [showResult, setShowResult] = useState(false);
 
   async function getBase64(file, cb){
     let reader = new FileReader()
@@ -51,7 +51,6 @@ function Math() {
         })
         .then(res => {
           setOcrResult(res.text)
-          setShowResult(true)
         })
       })
     } catch(e){
@@ -63,7 +62,7 @@ function Math() {
     <div className="App">
       <FileInput name="file" onChange={event => {
         setFile(event.target.files[0]);
-        handleFileChange()
+        handleFileChange();
       }} />
     </div>
   );

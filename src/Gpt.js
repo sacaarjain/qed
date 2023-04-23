@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-	apiKey: "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",
+	apiKey: "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",
 });
 
 const openai = new OpenAIApi(config);
@@ -18,7 +18,7 @@ export const runPrompt = async (question, answer) => {
 		"Result": "decide whether answer is correct or not, and provide reason why"
     }
     `;
-
+	console.log(prompt)
 	const response = await openai.createCompletion({
 		model: "text-davinci-003",
 		prompt: prompt,
