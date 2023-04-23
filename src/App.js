@@ -5,6 +5,7 @@ import Results from './Results'
 import { runPrompt } from './Gpt'
 import {useState} from 'react'
 import Ocr from './Ocr';
+import Math from './Math'
 const theme = {
   global: {
     font: {
@@ -19,9 +20,7 @@ const theme = {
 // main ui code
 export default function App() {
   const [value, setValue] = React.useState('');
-  
-
-
+  const [value2, setValue2] = React.useState('');  
 
     // <Results>: result-based image rendering component
   return (
@@ -40,10 +39,9 @@ export default function App() {
                   <Text>
                     Submit your math proof for validation:
                   </Text>
-                  <Box align="center" justify="center" direction="row">
+                  <Box align="center" justify="center" direction="column" gap="small">
                     <TextInput value={value} onChange={event => setValue(event.target.value)}/>
-                    
-                    <Button label="Submit" icon={<Checkmark />} hoverIndicator type="submit" gap="small" color="graph-3" onClick={()=>{runPrompt(value)}}/>
+
                   </Box>
                 </Main>
               </Box>
@@ -52,14 +50,13 @@ export default function App() {
                   <Text>
                     Submit your math proof for validation:
                   </Text>
-                  <Box align="center" justify="center" direction="row">
-                    <TextInput value={value} onChange={event => setValue(event.target.value)}/>
-                    <Button label="Submit" /*icon={<Checkmark />}*/ hoverIndicator type="submit" gap="small"  onClick={()=>{runPrompt(value);}}/>
+                  <Box align="center" justify="center" direction="column" gap= "small">
+                    <TextInput value={value2} onChange={event => setValue2(event.target.value)}/>
                   </Box>
                 </Main>
               </Box>
             </Card>
-            <Ocr />
+            <Math />
             <Card>
               <Results
               isCorrect = {true}
