@@ -33,19 +33,22 @@ export default function App() {
                 QED.ai □
               </Text>
             </CardHeader>
-            <Card direction= "row" algin= "center" pad= "small">
-              <Box align="center" direction="column" justify="center" flex= "grow" pad="xlarge" background={{"color":"white"}}>
+            <Card direction= "row" align= "center" pad= "small">
+              <Box align="center" direction="column" justify="center" flex= "grow" round="small" pad="xlarge" background={{"color":"white"}}>
                 <Main fill="vertical" flex="grow" overflow="auto">
                   <Text>
-                    Submit your math proof for validation:
+                    Type/Upload Problem
                   </Text>
-                  <Box align="center" justify="center" direction="column" gap="small">
+                  <Box align="center" justify="center" direction="row">
                     <TextInput value={value} onChange={event => setValue(event.target.value)}/>
-
+                    <Button label="Upload" hoverIndicator type="submit" gap="small" color="graph-3" onClick={()=>{runPrompt(value)}}/>
                   </Box>
+                  <FileInput>
+                  </FileInput>
+        
                 </Main>
               </Box>
-              <Box align="center" direction="column" justify="center" flex= "grow" pad="xlarge" background={{"color":"#2f3337"}}>
+              <Box align="center" direction="column" justify="center" flex= "grow" round="small" pad="xlarge" background={{"color":"#2f3337"}}>
                 <Main fill="vertical" flex="grow" overflow="auto">
                   <Text>
                     Submit your math proof for validation:
