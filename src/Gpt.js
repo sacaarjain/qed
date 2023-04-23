@@ -7,6 +7,7 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 export const runPrompt = async (question) => {
+	document.getElementById("Submit")
 	const prompt = `
     Is the following mathematical proof true: ${question}. Return response in the following parsable JSON format:
     {
