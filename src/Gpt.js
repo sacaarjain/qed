@@ -1,17 +1,17 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-	apiKey: "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",
+	apiKey: "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",
 });
 
 const openai = new OpenAIApi(config);
 
 export const runPrompt = async (question, answer) => {
 	const prompt = `
-    I will give you a question and an answer attempt, you will tell me if the answer is corect or not.
-	Question: ${question}
-	Answer: ${answer}
-	Return response in the following parsable JSON format:
+    I will give you a Question and the Answer that a student has attempted to answer the Question with. Do not answer the question. Grade the answer to that question. Is the student's Answer correct?
+	This is the question from the textbook: ${question}
+	This is the student's Answer: ${answer}
+	Return response regarding whether the student answered the question correctly in the following parsable JSON format:
     {
         "Q": "given question",
         "A": "given answer"
