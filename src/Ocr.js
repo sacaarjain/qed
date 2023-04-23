@@ -87,7 +87,12 @@ export default function Ocr() {
                     handleFileChange()
                     }} />
                   <Button label="Submit" onClick={event => {handleOcr()}}/>
-                  <Button label="Show Result" onClick={event => {handleGetResult()}}/>
+                  {isFetchingResult? (
+                    <p>Fetching Result...</p>
+                  ) : (
+                    <Button label="Show Result" onClick={event => {handleGetResult()}}/>
+                  )}
+                  
                 </Box>
         </Box>
         <OcrResult result={ocrResult} />
