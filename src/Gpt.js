@@ -1,19 +1,21 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-	apiKey: "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",
+	apiKey: "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",
 });
 
 const openai = new OpenAIApi(config);
 
-export const runPrompt = async (question) => {
-	document.getElementById("Submit")
+export const runPrompt = async (question, answer) => {
 	const prompt = `
-    Is the following mathematical proof true: ${question}. Return response in the following parsable JSON format:
+    I will give you a question and an answer attempt, you will tell me if the answer is corect or not.
+	Question: ${question}
+	Answer: ${answer}
+	Return response in the following parsable JSON format:
     {
-        "Q": "question",
-        "A": "answer"
-		"COQ": "translate math proof into COQ"
+        "Q": "given question",
+        "A": "given answer"
+		"Result": "decide whether answer is correct or not, and provide reason why"
     }
     `;
 
@@ -27,7 +29,11 @@ export const runPrompt = async (question) => {
 	const parsableJSONresponse = response.data.choices[0].text;
 	const parsedResponse = JSON.parse(parsableJSONresponse);
 
+
 	console.log("Question: ", parsedResponse.Q);
 	console.log("Answer: ", parsedResponse.A);
-	console.log("COQ: ", parsedResponse.COQ);
+	console.log("Result: ", parsedResponse.Result);
+
+	var retvalue = "Question: " + parsedResponse.Q + "\nAnswer: " + parsedResponse.A + "\nResult: " + parsedResponse.Result + "\n"
+	return retvalue;
 };

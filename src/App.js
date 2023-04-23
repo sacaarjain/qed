@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react'
-import { Grommet, Page, PageContent, Card, CardHeader, Text, Box, Main, TextInput, Button, FileInput } from 'grommet'
-import { Checkmark } from 'grommet-icons'
-import Results from './Results'
+import { Grommet, Page, Card, CardHeader, Text, Box, Main, TextInput} from 'grommet'
 import { runPrompt } from './Gpt'
-import {useState} from 'react'
-import Ocr from './Ocr';
 import Math from './Math'
 import './App.css';
 const theme = {
@@ -20,8 +16,10 @@ const theme = {
 
 // main ui code
 export default function App() {
-  const [value, setValue] = React.useState('');
-  const [value2, setValue2] = React.useState('');  
+  const [question, setQuestion] = React.useState('');
+  const [answer, setAnswer] = React.useState('');  
+  const [gpt, setGPT] = React.useState('');
+  const [showgpt, setShowGPT] = React.useState(false);
 
     // <Results>: result-based image rendering component
   return (
@@ -29,7 +27,10 @@ export default function App() {
       <Page>
         <CardHeader align="center" direction="row" flex={false} justify="between" gap="medium" pad="small" background={{"color":"#6307b3"}}>
           <Text size="4xl" color={"white"}>
-            QED.ai □
+            QED.ai
+          </Text>
+          <Text size="5xl" color={"white"}>
+          □ 
           </Text>
         </CardHeader>
         <Card direction= "row" align= "center" pad= "small" round="none" >
@@ -45,7 +46,7 @@ export default function App() {
                     Type/Upload Problem
                   </Text>
                   <Box gap= "small" align="center" justify="center" direction="row">
-                    <TextInput value={value} onChange={event => setValue(event.target.value)}/>
+                    <TextInput value={question} onChange={event => setQuestion(event.target.value)}/>
                   </Box>
                 </Box>
                 <Box>
@@ -64,7 +65,7 @@ export default function App() {
                     Type/Upload Your Work
                   </Text>
                   <Box gap= "small" align="center" justify="center" direction="row">
-                    <TextInput value={value2} onChange={event => setValue2(event.target.value)}/>
+                    <TextInput value={answer} onChange={event => setAnswer(event.target.value)}/>
                   </Box>
                 </Box>
                 <Box>
@@ -74,10 +75,20 @@ export default function App() {
             </Box>
         </Card>
         <div class="test">
-          <button class="button-61" width="100px" role="button" fdprocessedid="o7e4yy" style={{width: "132px", align: "center"}} onClick={()=>{runPrompt(value)}}>Submit</button>
+          <button class="button-61" width="100px" role="button" fdprocessedid="o7e4yy" style={{width: "132px", align: "center"}} onClick={()=>{
+            runPrompt(question, answer)
+            .then(response => {
+              setGPT(response)
+              setShowGPT(true);
+            })
+            }}>Submit</button>
         </div>
         <Card>
-          
+          <div class="css-fix">
+            {showgpt  &&
+              gpt
+            }
+          </div>
         </Card>
       </Page>
     </Grommet>

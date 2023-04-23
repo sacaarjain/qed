@@ -100,3 +100,11 @@
   padding-top: 1%;
   padding-bottom: 1%;
 }
+
+.css-fix {
+  white-space: pre-line;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  line-height: 40px;
+}

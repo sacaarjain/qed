@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Grommet, Page, PageContent, Card, CardHeader, Text, Box, Main, TextInput, Button, FileInput } from 'grommet'
-import axios from 'axios';
+import { FileInput } from 'grommet'
 
 function Math() {
   const [ocrResult, setOcrResult] = useState('');
@@ -20,6 +19,7 @@ function Math() {
 
   function handleFileChange(event) {
     setOcrResult('');
+    handleOcr();
   }
 
   async function handleOcr() {
@@ -61,18 +61,10 @@ function Math() {
 
   return (
     <div className="App">
-    
       <FileInput name="file" onChange={event => {
-                    setFile(event.target.files[0]);
-                    handleFileChange()
-                    }} />
-      {/*<button onClick={handleOcr}>Run OCR</button>*/}
-      <p>
-        {showResult &&
-            ocrResult
-        }
-      </p>
-
+        setFile(event.target.files[0]);
+        handleFileChange()
+      }} />
     </div>
   );
 }
