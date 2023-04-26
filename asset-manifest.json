@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/sacaarjain/qed/static/css/main.e5c014bc.css",
-    "main.js": "/sacaarjain/qed/static/js/main.1588f354.js",
+    "main.js": "/sacaarjain/qed/static/js/main.df63e8d6.js",
     "static/js/787.fcca97a0.chunk.js": "/sacaarjain/qed/static/js/787.fcca97a0.chunk.js",
+    "static/media/qed-logo.jpg": "/sacaarjain/qed/static/media/qed-logo.78dfa9a7f915b7a44d72.jpg",
     "index.html": "/sacaarjain/qed/index.html",
     "main.e5c014bc.css.map": "/sacaarjain/qed/static/css/main.e5c014bc.css.map",
-    "main.1588f354.js.map": "/sacaarjain/qed/static/js/main.1588f354.js.map",
+    "main.df63e8d6.js.map": "/sacaarjain/qed/static/js/main.df63e8d6.js.map",
     "787.fcca97a0.chunk.js.map": "/sacaarjain/qed/static/js/787.fcca97a0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e5c014bc.css",
-    "static/js/main.1588f354.js"
+    "static/js/main.df63e8d6.js"
   ]
 }
